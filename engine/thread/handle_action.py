@@ -10,5 +10,11 @@ class HandleActionThread(EventLoopBaseThread):
 
     def loop(self) -> bool:
         if len(self.action_stack) > 0:
-            self.events.do_action.emit(*self.action_stack.pop())
+            main, args = self.action_stack.pop()
+            for i in range(len(args)):
+                try:
+                    args[i] = float(args[i])
+                except Exception:
+                    pass
+            self.events.do_action.emit(main, *args)
         return True

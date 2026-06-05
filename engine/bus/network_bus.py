@@ -1,7 +1,7 @@
 from socket import AddressFamily, SocketKind, socket
 
 
-class NetworkBus:
+class RoboMasterNetworkBus:
     def __init__(self, *, socket_port: int) -> None:
         self.socket_port = socket_port
         self.socket = socket(AddressFamily.AF_INET, SocketKind.SOCK_DGRAM)

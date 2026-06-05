@@ -1,7 +1,7 @@
 from engine.channel.event_emitter import EventEmitter, EventSubscriber
 
 
-class EventBus:
+class RoboMasterEventBus:
     def __init__(self) -> None:
         self.message_received = EventEmitter()
         self.command_parsed = EventEmitter()

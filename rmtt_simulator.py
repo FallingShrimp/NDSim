@@ -1,5 +1,5 @@
-from engine.bus.event_bus import EventBus
-from engine.bus.network_bus import NetworkBus
+from engine.bus.event_bus import RoboMasterEventBus
+from engine.bus.network_bus import RoboMasterNetworkBus
 from engine.thread.handle_action import HandleActionThread
 from engine.thread.parse_command import ParseCommandThread
 from engine.thread.receive_message import ReceiveMessageThread
@@ -7,7 +7,9 @@ import sys
 
 
 class RoboMaster:
-    def __init__(self, events: EventBus, network: NetworkBus) -> None:
+    def __init__(
+        self, events: RoboMasterEventBus, network: RoboMasterNetworkBus
+    ) -> None:
         self.events = events
         self.network = network
         self.receive_message_thread = ReceiveMessageThread(events, network)

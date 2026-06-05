@@ -2,15 +2,16 @@ import sys
 import os
 
 sys.path.append(os.getcwd())
-from engine.bus.network_bus import NetworkBus
-from rmtt_simulator import EventBus, RoboMaster
+from engine.bus.network_bus import RoboMasterNetworkBus
+from rmtt_simulator import RoboMasterEventBus, RoboMaster
 
-events = EventBus()
-network = NetworkBus(socket_port=8889)
+events = RoboMasterEventBus()
+network = RoboMasterNetworkBus(socket_port=8889)
 
 
 @events.on
 def do_action(main, *args):
+    print(main, args)
     match main:
         case "command":
             network.response("ok")
