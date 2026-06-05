@@ -1,6 +1,6 @@
-from nd_sim import EventBus, NDSimulator
+from rmtt_simulator import EventBus, RoboMaster
 
 events = EventBus(socket_port=8889)
-simulator = NDSimulator(events)
+simulator = RoboMaster(events)
 
 simulator.start()

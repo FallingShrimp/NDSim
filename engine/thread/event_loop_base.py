@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from threading import Thread
 
-from nd_sim import EventBus
+from engine.bus.event_bus import EventBus
 
 
 class EventLoopBaseThread(Thread, ABC):

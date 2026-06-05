@@ -5,7 +5,7 @@ from engine.thread.receive_message import ReceiveMessageThread
 import sys
 
 
-class NDSimulator:
+class RoboMaster:
     def __init__(self, events: EventBus) -> None:
         self.events = events
         self.receive_message_thread = ReceiveMessageThread(events)
@@ -23,4 +23,5 @@ class NDSimulator:
             self.receive_message_thread.stop()
             self.parse_command_thread.stop()
             self.handle_action_thread.stop()
+            self.events.socket.close()
             sys.exit(0)

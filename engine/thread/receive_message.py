@@ -6,9 +6,12 @@ class ReceiveMessageThread(EventLoopBaseThread):
         return
 
     def loop(self) -> bool:
-        msg = self.events.socket.recv(1024)
-        if msg:
-            command = msg.decode("utf8")
-            if command:
-                self.events.message_received.emit(command)
-        return True
+        try:
+            msg = self.events.socket.recv(1024)
+            if msg:
+                command = msg.decode("utf8")
+                if command:
+                    self.events.message_received.emit(command)
+            return True
+        except OSError:
+            return False
