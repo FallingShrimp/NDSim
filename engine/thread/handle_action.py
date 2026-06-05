@@ -1,7 +1,7 @@
-from engine.thread.event_loop_base import EventLoopBase
+from engine.thread.event_loop_base import EventLoopBaseThread
 
 
-class HandleActionThread(EventLoopBase):
+class HandleActionThread(EventLoopBaseThread):
     def spawn(self) -> None:
         self.action_stack: list[tuple[str, list]] = []
         self.events.command_parsed.subscribe(

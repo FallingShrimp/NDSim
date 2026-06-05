@@ -1,7 +1,7 @@
-from engine.thread.event_loop_base import EventLoopBase
+from engine.thread.event_loop_base import EventLoopBaseThread
 
 
-class ParseCommandThread(EventLoopBase):
+class ParseCommandThread(EventLoopBaseThread):
     def spawn(self) -> None:
         self.events.message_received.subscribe(self.parse)
 

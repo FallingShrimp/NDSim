@@ -1,7 +1,7 @@
-from engine.thread.event_loop_base import EventLoopBase
+from engine.thread.event_loop_base import EventLoopBaseThread
 
 
-class ReceiveMessageThread(EventLoopBase):
+class ReceiveMessageThread(EventLoopBaseThread):
     def spawn(self) -> None:
         return
 

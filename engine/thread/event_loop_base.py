@@ -4,7 +4,7 @@ from threading import Thread
 from nd_sim import EventBus
 
 
-class EventLoopBase(Thread, ABC):
+class EventLoopBaseThread(Thread, ABC):
     def __init__(self, events: EventBus) -> None:
         super().__init__()
         self.events = events
