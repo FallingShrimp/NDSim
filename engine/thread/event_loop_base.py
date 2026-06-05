@@ -11,6 +11,7 @@ class EventLoopBase(Thread, ABC):
 
     def run(self) -> None:
         self.running = True
+        self.spawn()
         while self.running:
             if not self.loop():
                 break
