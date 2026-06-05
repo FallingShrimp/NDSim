@@ -9,10 +9,11 @@ class HandleActionThread(EventLoopBase):
         )
 
     def loop(self) -> bool:
-        main, args = self.action_stack.pop()
-        match main:
-            case "takeoff":
-                print(1)
-            case "forward":
-                print("f", args)
+        if len(self.action_stack) > 0:
+            main, args = self.action_stack.pop()
+            match main:
+                case "takeoff":
+                    print(1)
+                case "forward":
+                    print("f", args)
         return True

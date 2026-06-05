@@ -6,6 +6,7 @@ from nd_sim import EventBus
 
 class EventLoopBase(Thread, ABC):
     def __init__(self, events: EventBus) -> None:
+        super().__init__()
         self.events = events
         self.running = False
 
@@ -15,7 +16,6 @@ class EventLoopBase(Thread, ABC):
         while self.running:
             if not self.loop():
                 break
-        self.running = False
 
     def stop(self):
         self.running = False

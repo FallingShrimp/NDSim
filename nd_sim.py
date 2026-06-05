@@ -2,6 +2,7 @@ from engine.bus.event_bus import EventBus
 from engine.thread.handle_action import HandleActionThread
 from engine.thread.parse_command import ParseCommandThread
 from engine.thread.receive_message import ReceiveMessageThread
+import sys
 
 
 class NDSimulator:
@@ -15,3 +16,11 @@ class NDSimulator:
         self.receive_message_thread.start()
         self.parse_command_thread.start()
         self.handle_action_thread.start()
+        try:
+            while True:
+                pass
+        except KeyboardInterrupt:
+            self.receive_message_thread.stop()
+            self.parse_command_thread.stop()
+            self.handle_action_thread.stop()
+            sys.exit(0)
