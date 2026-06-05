@@ -17,6 +17,7 @@ class RoboMaster:
         self.parse_command_thread.start()
         self.handle_action_thread.start()
         try:
+            print(f"正在{self.events.socket_port}上运行")
             while True:
                 pass
         except KeyboardInterrupt:

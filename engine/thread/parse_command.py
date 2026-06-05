@@ -12,4 +12,4 @@ class ParseCommandThread(EventLoopBaseThread):
         parts = msg.split(" ")
         main = parts[0]
         args = parts[1:]
-        self.events.command_parsed.emit(main, args)
+        self.events.command_parsed.emit(main, *args)

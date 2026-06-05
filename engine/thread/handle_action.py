@@ -10,10 +10,5 @@ class HandleActionThread(EventLoopBaseThread):
 
     def loop(self) -> bool:
         if len(self.action_stack) > 0:
-            main, args = self.action_stack.pop()
-            match main:
-                case "takeoff":
-                    print(1)
-                case "forward":
-                    print("f", args)
+            self.events.do_action.emit(*self.action_stack.pop())
         return True
